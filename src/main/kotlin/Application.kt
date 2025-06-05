@@ -7,7 +7,7 @@ fun main(args: Array<String>) {
 }
 
 fun Application.module() {
-    configureSerialization()
-    configureMonitoring()
     configureRouting()
+    configureMonitoring()
+    configureSerialization()
 }
