@@ -1,38 +1,31 @@
 package com.enebin
 
+import api.BitcoinApiClient
 import io.ktor.server.application.*
 import io.ktor.server.http.content.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import kotlinx.serialization.Serializable
 
 fun Application.configureRouting() {
     routing {
         get("/") {
-            call.respondText("Hello, Router!")
-        }
-        get("/json") {
-            call.respond(Sample("Hello, JSON"))
-        }
-        get("/html") {
+            val priceIndex = BitcoinApiClient.fetchBitcoinPrice()
+            log.info(getBitcoinPrice())
+            
             call.respondText(
-                """
-        <html>
-            <body>
-                <h1>Hello Ktor HTML</h1>
-                <form action="/json" method="get">
-                    <button type="submit">Go to JSON</button>
-                </form>
-            </body>
-        </html>
-        """.trimIndent(),
-                contentType = io.ktor.http.ContentType.Text.Html
+                getBitcoinPrice()
             )
+
+            BitcoinApiClient.close()
         }
+
         // Static plugin. Try to access `/static/index.html`
         staticResources("/static", "static")
     }
 }
 
-@Serializable
-data class Sample(val message: String, val id: Int = 1)
+private suspend fun getBitcoinPrice(): String {
+    val priceIndex = BitcoinApiClient.fetchBitcoinPrice()
+    return "비트코인 현재가: ${priceIndex.quotes.USD.price} USD\n" +
+            "업데이트 시간: ${priceIndex.lastUpdated}"
+}

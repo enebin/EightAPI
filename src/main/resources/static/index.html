@@ -1,7 +1,63 @@
-<html>
- <head>
- </head>
- <body>
-   <h1>Hello Ktor!</h1>
- </body>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>LLM 투자 자동화</title>
+    <!-- Tailwind CDN (간단 테스트 용) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<main class="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 flex items-center justify-center px-4">
+    <div class="bg-white shadow-2xl rounded-2xl max-w-2xl w-full p-10 flex flex-col gap-6">
+        <h1 class="text-4xl font-bold text-blue-900 mb-2">
+            AI 투자 자동화,
+            <span class="text-blue-600 block">더 똑똑한 미래를 만나다</span>
+        </h1>
+        <p class="text-lg text-gray-600">
+            대형 언어 모델(LLM)을 활용한 차세대 투자 자동화 서비스.<br/>
+            누구나 쉽고, 안전하게 인공지능이 시장을 분석하고, 자동으로 투자 기회를 포착합니다.
+        </p>
+
+        <div class="mt-4 flex flex-col gap-4">
+            <div class="flex items-center gap-3">
+                <span class="inline-block bg-blue-100 text-blue-800 rounded-full px-3 py-1 text-xs font-medium">AI 분석</span>
+                <span class="text-gray-700">실시간 금융 뉴스와 데이터를 LLM이 분석합니다.</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="inline-block bg-green-100 text-green-800 rounded-full px-3 py-1 text-xs font-medium">자동 투자</span>
+                <span class="text-gray-700">시장 상황에 따라 자동으로 포트폴리오를 조정합니다.</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="inline-block bg-purple-100 text-purple-800 rounded-full px-3 py-1 text-xs font-medium">맞춤 추천</span>
+                <span class="text-gray-700">이용자 성향에 맞춘 투자 전략을 제안합니다.</span>
+            </div>
+        </div>
+
+        <div class="my-6 border-t pt-6">
+            <p class="text-md text-gray-500 mb-4">
+                지금 사전 등록하고, 누구보다 먼저 새로운 투자 경험을 시작하세요.
+            </p>
+            <form class="flex flex-col sm:flex-row gap-2">
+                <input
+                        class="flex-1 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                        placeholder="이메일을 입력하세요"
+                        required
+                        type="email"
+                />
+                <button
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg transition"
+                        type="submit"
+                >
+                    사전 등록
+                </button>
+            </form>
+        </div>
+
+        <footer class="text-xs text-gray-400 mt-8 text-center">
+            © 2025 LLM 투자 자동화 서비스. 모든 권리 보유.
+        </footer>
+    </div>
+</main>
+</body>
 </html>
