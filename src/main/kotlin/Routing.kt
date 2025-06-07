@@ -1,6 +1,6 @@
 package com.enebin
 
-import api.BitcoinApiClient
+import com.enebin.api.bitcoin.BitcoinApiClient
 import io.ktor.server.application.*
 import io.ktor.server.http.content.*
 import io.ktor.server.response.*
@@ -11,7 +11,7 @@ fun Application.configureRouting() {
         get("/") {
             val priceIndex = BitcoinApiClient.fetchBitcoinPrice()
             log.info(getBitcoinPrice())
-            
+
             call.respondText(
                 getBitcoinPrice()
             )

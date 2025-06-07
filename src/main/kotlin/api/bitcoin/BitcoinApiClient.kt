@@ -1,4 +1,4 @@
-package api
+package com.enebin.api.bitcoin
 
 import io.ktor.client.*
 import io.ktor.client.call.*

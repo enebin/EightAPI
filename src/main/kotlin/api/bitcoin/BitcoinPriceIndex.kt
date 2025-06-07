@@ -1,4 +1,4 @@
-package api
+package com.enebin.api.bitcoin
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
