@@ -3,6 +3,7 @@ package com.enebin
 import com.enebin.api.bitcoin.BitcoinApiClient
 import dto.AccountSummaryResponse
 import dto.HealthResponse
+import dto.HoldingsResponse
 import io.ktor.server.application.*
 import io.ktor.server.http.content.*
 import io.ktor.server.response.*
@@ -20,6 +21,10 @@ fun Application.configureRouting() {
 
         get("/api/account/summary") {
             call.respond(AccountSummaryResponse.mock())
+        }
+
+        get("/api/portfolio/holdings") {
+            call.respond(HoldingsResponse.mock())
         }
 
         // Static plugin. Try to access `/static/index.html`
