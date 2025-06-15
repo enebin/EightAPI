@@ -1,12 +1,16 @@
-package com.enebin.plugins
+package plugins
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.ktor.server.config.*
 import kotlinx.coroutines.Dispatchers
+import model.PortfolioTargets
+import model.Users
 import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.Transaction
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
+import org.jetbrains.exposed.sql.transactions.transaction
 
 object DatabaseFactory {
     fun init(config: ApplicationConfig) {
@@ -27,6 +31,11 @@ object DatabaseFactory {
 
         // Exposed와 커넥션 풀 연결
         Database.connect(hikari)
+        
+        transaction {
+            SchemaUtils.create(Users)
+            SchemaUtils.create(PortfolioTargets) // ✅ 이 줄을 추가
+        }
     }
 
     private fun createHikariDataSource(
