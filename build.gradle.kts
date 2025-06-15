@@ -23,13 +23,21 @@ dependencies {
     implementation(libs.ktor.server.host.common)
     implementation(libs.ktor.server.netty)
     implementation(libs.logback.classic)
+
+    // server
     implementation(libs.ktor.server.config.yaml)
     implementation("io.ktor:ktor-client-core:2.3.7")
     implementation("io.ktor:ktor-client-cio:2.3.7")
     implementation("io.ktor:ktor-server-cors:3.1.3")
     implementation("io.ktor:ktor-client-content-negotiation:2.3.7")
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.7")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+
+    // Database Libraries (PostgreSQL)
+    implementation("org.jetbrains.exposed:exposed-core:0.52.0")
+    implementation("org.jetbrains.exposed:exposed-dao:0.52.0")
+    implementation("org.jetbrains.exposed:exposed-jdbc:0.52.0")
+    implementation("com.zaxxer:HikariCP:5.1.0")
+    implementation("org.postgresql:postgresql:42.7.3")
 
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
