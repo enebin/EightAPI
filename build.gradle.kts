@@ -33,9 +33,11 @@ dependencies {
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.7")
 
     // Database Libraries (PostgreSQL)
-    implementation("org.jetbrains.exposed:exposed-core:0.52.0")
-    implementation("org.jetbrains.exposed:exposed-dao:0.52.0")
-    implementation("org.jetbrains.exposed:exposed-jdbc:0.52.0")
+    val exposedVersion = "0.52.0"
+    implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
     implementation("com.zaxxer:HikariCP:5.1.0")
     implementation("org.postgresql:postgresql:42.7.3")
 

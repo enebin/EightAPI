@@ -1,7 +1,7 @@
 package com.enebin
 
-import com.enebin.plugins.DatabaseFactory
 import io.ktor.server.application.*
+import plugins.DatabaseFactory
 
 fun main(args: Array<String>) {
     io.ktor.server.netty.EngineMain.main(args)

@@ -2,14 +2,14 @@ package com.enebin
 
 import com.enebin.api.bitcoin.BitcoinApiClient
 import dto.AccountSummaryResponse
-import dto.HealthResponse
 import dto.HoldingsResponse
-import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.http.content.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import plugins.DatabaseFactory.dbQuery
+import routes.healthRoutes
+import routes.portfolioRoutes
+import routes.userRoutes
 import java.lang.Thread.sleep
 
 
@@ -28,23 +28,9 @@ fun Application.configureRouting() {
             call.respond(HoldingsResponse.mock())
         }
 
-        route("/health") {
-            get {
-                call.respond(HealthResponse(status = "OK"))
-            }
-
-            get("/db") {
-                try {
-                    dbQuery {
-                        // "SELECT 1" 쿼리를 실행
-                        exec("SELECT 1")
-                    }
-                    call.respondText("데이터베이스 연결 성공!")
-                } catch (e: Exception) {
-                    call.respondText("데이터베이스 연결 실패: ${e.message}", status = HttpStatusCode.InternalServerError)
-                }
-            }
-        }
+        userRoutes()
+        healthRoutes()
+        portfolioRoutes()
 
         // Static plugin. Try to access `/static/index.html`
         staticResources("/static", "static")
